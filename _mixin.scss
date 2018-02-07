@@ -57,13 +57,26 @@
     }
 }
 
-@mixin ie8 {
-    .ie8 {
+@mixin ios {
+    @at-root .ios & {
         @content;
     }
 }
-@mixin ie9 {
-    .ie9 {
+
+@mixin android {
+    @at-root .android & {
+        @content;
+    }
+}
+
+@mixin customRoot($name) {
+    @at-root #{$name} & {
+        @content;
+    }
+}
+
+@mixin optional-at-root($sel) {
+     @at-root #{if(not &, $sel, selector-append(&, $sel))}{
         @content;
     }
 }
